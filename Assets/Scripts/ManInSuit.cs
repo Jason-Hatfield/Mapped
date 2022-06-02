@@ -19,8 +19,8 @@ public class ManInSuit : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
             rb.AddForce(Vector3.right);
         if (Input.GetKey(KeyCode.W))
-            rb.AddForce(Vector3.up);
+            rb.AddForce(Vector3.forward);
         if (Input.GetKey(KeyCode.S))
-            rb.AddForce(Vector3.down);
+            rb.AddForce(Vector3.back);
     }
 }
