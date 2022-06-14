@@ -1,9 +1,10 @@
+using CodeMonkey.HealthSystemCM;
 using UnityEngine;
 
 public class JustForTheCapsule : MonoBehaviour{
-    private void OnCollisionEnter(Collision collision)
+    public GameObject otherObject;
+    void OnTriggerEnter()
     {
-        if (transform.position.y <= 5)
-            Debug.Log("AAAAAAAA");
+        otherObject.GetComponent<HealthSystemComponent>().GetHealthSystem().Damage(30);
     }
 }

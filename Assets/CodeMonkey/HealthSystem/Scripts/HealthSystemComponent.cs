@@ -15,7 +15,6 @@ namespace CodeMonkey.HealthSystemCM {
 
         private HealthSystem healthSystem;
 
-
         private void Awake() {
             // Create Health System
             healthSystem = new HealthSystem(healthAmountMax);
@@ -31,8 +30,6 @@ namespace CodeMonkey.HealthSystemCM {
         public HealthSystem GetHealthSystem() {
             return healthSystem;
         }
-
-
     }
 
 }
