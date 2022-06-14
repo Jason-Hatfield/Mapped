@@ -21,10 +21,13 @@ public class imaclown : MonoBehaviour
 		healthSystem.Damage(damageAmount);
 	}
 
-	private void HealthSystem_OnDead(object sender, System.EventArgs e)
+    
+
+    private void HealthSystem_OnDead(object sender, System.EventArgs e)
 	{
 		otherObject.GetComponent<TimerController>().EndTimer();
 		transform.position = new Vector3(0f, 0f, 0f);
+		Awake();
 		otherObject.GetComponent<TimerController>().BeginTimer();
 	}
 
