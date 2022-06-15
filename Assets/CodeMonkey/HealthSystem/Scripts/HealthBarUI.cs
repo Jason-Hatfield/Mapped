@@ -1,13 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace CodeMonkey.HealthSystemCM {
+namespace CodeMonkey.HealthSystemCM
+{
 
     /// <summary>
     /// Simple UI Health Bar, sets the Image fillAmount based on the linked HealthSystem
     /// Check the Demo scene for a usage example
     /// </summary>
-    public class HealthBarUI : MonoBehaviour {
+    public class HealthBarUI : MonoBehaviour
+    {
 
         [Tooltip("Optional; Either assign a reference in the Editor (that implements IGetHealthSystem) or manually call SetHealthSystem()")]
         [SerializeField] private GameObject getHealthSystemGameObject;
@@ -19,8 +21,10 @@ namespace CodeMonkey.HealthSystemCM {
         private HealthSystem healthSystem;
 
 
-        private void Start() {
-            if (HealthSystem.TryGetHealthSystem(getHealthSystemGameObject, out HealthSystem healthSystem)) {
+        private void Start()
+        {
+            if (HealthSystem.TryGetHealthSystem(getHealthSystemGameObject, out HealthSystem healthSystem))
+            {
                 SetHealthSystem(healthSystem);
             }
         }
@@ -28,8 +32,10 @@ namespace CodeMonkey.HealthSystemCM {
         /// <summary>
         /// Set the Health System for this Health Bar
         /// </summary>
-        public void SetHealthSystem(HealthSystem healthSystem) {
-            if (this.healthSystem != null) {
+        public void SetHealthSystem(HealthSystem healthSystem)
+        {
+            if (this.healthSystem != null)
+            {
                 this.healthSystem.OnHealthChanged -= HealthSystem_OnHealthChanged;
             }
             this.healthSystem = healthSystem;
@@ -42,21 +48,24 @@ namespace CodeMonkey.HealthSystemCM {
         /// <summary>
         /// Event fired from the Health System when Health Amount changes, update Health Bar
         /// </summary>
-        private void HealthSystem_OnHealthChanged(object sender, System.EventArgs e) {
+        private void HealthSystem_OnHealthChanged(object sender, System.EventArgs e)
+        {
             UpdateHealthBar();
         }
 
         /// <summary>
         /// Update Health Bar using the Image fillAmount based on the current Health Amount
         /// </summary>
-        private void UpdateHealthBar() {
+        private void UpdateHealthBar()
+        {
             image.fillAmount = healthSystem.GetHealthNormalized();
         }
 
         /// <summary>
         /// Clean up events when this Game Object is destroyed
         /// </summary>
-        private void OnDestroy() {
+        private void OnDestroy()
+        {
             healthSystem.OnHealthChanged -= HealthSystem_OnHealthChanged;
         }
 

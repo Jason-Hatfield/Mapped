@@ -13,10 +13,12 @@
 using System;
 using UnityEngine;
 
-namespace CodeMonkey.HealthSystemCM {
+namespace CodeMonkey.HealthSystemCM
+{
 
     //[CreateAssetMenu(fileName = "Readme", menuName = "CodeMonkey/HealthSystem/ReadMe", order = 1)]
-    public class Readme_HealthSystem : ScriptableObject {
+    public class Readme_HealthSystem : ScriptableObject
+    {
 
         public Texture2D codeMonkeyHeader;
         public string title;
@@ -25,7 +27,8 @@ namespace CodeMonkey.HealthSystemCM {
         public Section[] sections;
 
         [Serializable]
-        public class Section {
+        public class Section
+        {
             public string heading, linkText, url;
             public string[] textLines;
         }

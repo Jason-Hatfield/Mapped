@@ -1,15 +1,18 @@
-﻿using UnityEngine;
-using UnityEditor;
+﻿using UnityEditor;
+using UnityEngine;
 
-namespace CodeMonkey.HealthSystemCM {
+namespace CodeMonkey.HealthSystemCM
+{
 
     [CustomEditor(typeof(Readme_HealthSystem))]
     [InitializeOnLoad]
-    public class ReadmeEditor_HealthSystem : Editor {
+    public class ReadmeEditor_HealthSystem : Editor
+    {
 
         private static float kSpace = 16f;
 
-        protected override void OnHeaderGUI() {
+        protected override void OnHeaderGUI()
+        {
             Readme_HealthSystem readme = (Readme_HealthSystem)target;
             Init();
 
@@ -24,26 +27,34 @@ namespace CodeMonkey.HealthSystemCM {
             GUILayout.Label(readme.title, HeaderStyle);
         }
 
-        public override void OnInspectorGUI() {
+        public override void OnInspectorGUI()
+        {
             Readme_HealthSystem readme = (Readme_HealthSystem)target;
             Init();
 
-            foreach (Readme_HealthSystem.Section section in readme.sections) {
-                if (!string.IsNullOrEmpty(section.heading)) {
+            foreach (Readme_HealthSystem.Section section in readme.sections)
+            {
+                if (!string.IsNullOrEmpty(section.heading))
+                {
                     GUILayout.Label(section.heading, HeadingStyle);
                 }
-                if (section.textLines != null) {
-                    foreach (string textLine in section.textLines) {
-                        if (!string.IsNullOrEmpty(textLine)) {
+                if (section.textLines != null)
+                {
+                    foreach (string textLine in section.textLines)
+                    {
+                        if (!string.IsNullOrEmpty(textLine))
+                        {
                             string sectionText = textLine;
                             sectionText = sectionText.Replace("\\n", "\n");
                             GUILayout.Label(sectionText, BodyStyleSmall);
                         }
                     }
                 }
-                if (!string.IsNullOrEmpty(section.linkText)) {
+                if (!string.IsNullOrEmpty(section.linkText))
+                {
                     GUILayout.Space(kSpace / 2);
-                    if (LinkLabel(new GUIContent(section.linkText))) {
+                    if (LinkLabel(new GUIContent(section.linkText)))
+                    {
                         Application.OpenURL(section.url);
                     }
                 }
@@ -72,7 +83,8 @@ namespace CodeMonkey.HealthSystemCM {
         private GUIStyle BodyStyleSmall { get { return m_BodyStyleSmall; } }
         [SerializeField] private GUIStyle m_BodyStyleSmall;
 
-        private void Init() {
+        private void Init()
+        {
             if (m_Initialized)
                 return;
 
@@ -104,7 +116,8 @@ namespace CodeMonkey.HealthSystemCM {
             m_Initialized = true;
         }
 
-        private bool LinkLabel(GUIContent label, params GUILayoutOption[] options) {
+        private bool LinkLabel(GUIContent label, params GUILayoutOption[] options)
+        {
             var position = GUILayoutUtility.GetRect(label, LinkStyle, options);
 
             Handles.BeginGUI();
